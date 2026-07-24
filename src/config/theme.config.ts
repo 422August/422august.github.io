@@ -78,4 +78,5 @@ export const tags = [
   { slug: "domestic", name: "Domestic" },
   { slug: "projects", name: "Projects" },
   { slug: "leadership", name: "Leadership" },
+  { slug: "feelings", name: "Feelings" },
 ];
