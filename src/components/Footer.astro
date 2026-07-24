@@ -6,6 +6,7 @@ import { SOCIAL_LINKS } from "../config/theme.config.ts";
 const { flush = false } = Astro.props;
 ---
 
+{/* Footer component */}
 <footer class:list={[flush ? "mt-0" : "mt-24", "border-t border-border/60"]}>
   <div class="mx-auto grid max-w-6xl gap-10 px-5 py-12 md:grid-cols-4">
     <div class="md:col-span-2">
@@ -29,7 +30,10 @@ const { flush = false } = Astro.props;
         {
           categories.slice(0, 5).map((category) => (
             <li>
-              <a href={`/categories/${category.slug}`} class="text-foreground/80 hover:text-foreground">
+              <a
+                href={`/categories/${category.slug}`}
+                class="text-foreground/80 hover:text-foreground"
+              >
                 {category.name}
               </a>
             </li>
@@ -48,8 +52,10 @@ const { flush = false } = Astro.props;
     </div>
   </div>
   <div class="border-t border-border/60">
-    <div class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-2 px-5 py-5 text-xs text-muted-foreground sm:flex-row sm:items-center">
-      <div>&copy; {new Date().getFullYear()} {SITE.name}. Quietly made on the open web.</div>
+    <div
+      class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-2 px-5 py-5 text-xs text-muted-foreground sm:flex-row sm:items-center"
+    >
+      <div>&copy; {new Date().getFullYear()} {SITE.name}.</div>
       <div>Set in Fraunces &amp; Inter.</div>
     </div>
   </div>

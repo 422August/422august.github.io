@@ -2,8 +2,7 @@ import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
 
-const site =
-  process.env.SITE_URL || process.env.PUBLIC_SITE_URL || "https://quietpages-eta.vercel.app";
+const site = "https://422august.github.io/blogs";
 
 export default defineConfig({
   site,

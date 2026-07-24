@@ -11,6 +11,7 @@ import {
   SITE,
   getAuthor,
   getCategory,
+  getImageCredit,
   getTag,
   formatDate,
   relatedPosts,
@@ -73,7 +74,12 @@ const jsonLd = {
   flushFooter
 >
   <div class="fixed left-0 right-0 top-0 z-50 h-0.5 bg-transparent">
-    <div data-reading-progress class="h-full bg-primary transition-[width] duration-75" style="width: 0%"></div>
+    <div
+      data-reading-progress
+      class="h-full bg-primary transition-[width] duration-75"
+      style="width: 0%"
+    >
+    </div>
   </div>
 
   <article class="mx-auto max-w-6xl px-5 py-10">
@@ -89,7 +95,10 @@ const jsonLd = {
     <header class="mx-auto mt-8 max-w-3xl text-center">
       {
         category && (
-          <a href={`/categories/${category.slug}`} class="text-xs font-medium uppercase tracking-[0.2em] text-primary hover:underline">
+          <a
+            href={`/categories/${category.slug}`}
+            class="text-xs font-medium uppercase tracking-[0.2em] text-primary hover:underline"
+          >
             {category.name}
           </a>
         )
@@ -98,10 +107,15 @@ const jsonLd = {
         {post.title}
       </h1>
       <p class="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">{post.excerpt}</p>
-      <div class="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
+      <div
+        class="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm text-muted-foreground"
+      >
         {
           author && (
-            <a href={`/authors/${author.slug}`} class="flex items-center gap-2 hover:text-foreground">
+            <a
+              href={`/authors/${author.slug}`}
+              class="flex items-center gap-2 hover:text-foreground"
+            >
               <img src={author.avatar} alt="" width="28" height="28" class="h-7 w-7 rounded-full" />
               {author.name}
             </a>
@@ -109,7 +123,16 @@ const jsonLd = {
         }
         <span>&middot;</span>
         <time datetime={post.date}>{formatDate(post.date)}</time>
-        {post.updated && <><span>&middot;</span><span class="italic">updated {formatDate(post.updated)}</span></>}
+        {
+          post.updated && (
+            <>
+              <>
+                <span>&middot;</span>
+                <span class="italic">updated {formatDate(post.updated)}</span>
+              </>
+            </>
+          )
+        }
         <span>&middot;</span>
         <span>{post.readingTime} min read</span>
       </div>
@@ -129,34 +152,32 @@ const jsonLd = {
               quality={78}
             />
           </div>
-          {
-            post.imageCredit && (
-              <figcaption class="mx-auto mt-3 max-w-2xl text-center text-xs leading-relaxed text-muted-foreground">
-                {post.imageCredit.caption && <span>{post.imageCredit.caption} </span>}
-                <span>
-                  Photo by{" "}
-                  <a
-                    href={post.imageCredit.authorUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    class="text-foreground/75 underline underline-offset-2 hover:text-primary"
-                  >
-                    {post.imageCredit.author}
-                  </a>{" "}
-                  on{" "}
-                  <a
-                    href={post.imageCredit.sourceUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    class="text-foreground/75 underline underline-offset-2 hover:text-primary"
-                  >
-                    {post.imageCredit.source}
-                  </a>
-                  .
-                </span>
-              </figcaption>
-            )
-          }
+          {post.imageCredit && (
+            <figcaption class="mx-auto mt-3 max-w-2xl text-center text-xs leading-relaxed text-muted-foreground">
+              {post.imageCredit.caption && <span>{post.imageCredit.caption} </span>}
+              <span>
+                Photo by{" "}
+                <a
+                  href={post.imageCredit.authorUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-foreground/75 underline underline-offset-2 hover:text-primary"
+                >
+                  {post.imageCredit.author}
+                </a>{" "}
+                on{" "}
+                <a
+                  href={post.imageCredit.sourceUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-foreground/75 underline underline-offset-2 hover:text-primary"
+                >
+                  {post.imageCredit.source}
+                </a>
+                .
+              </span>
+            </figcaption>
+          )}
         </figure>
       )
     }
@@ -173,7 +194,10 @@ const jsonLd = {
             post.tags.map((tag) => {
               const item = getTag(tag);
               return (
-                <a href={`/tags/${tag}`} class="rounded-full border border-border px-2.5 py-1 text-xs text-muted-foreground hover:border-primary hover:text-primary">
+                <a
+                  href={`/tags/${tag}`}
+                  class="rounded-full border border-border px-2.5 py-1 text-xs text-muted-foreground hover:border-primary hover:text-primary"
+                >
                   #{item?.name ?? tag}
                 </a>
               );
@@ -183,21 +207,55 @@ const jsonLd = {
 
         <div class="mt-8 flex items-center gap-2 border-y border-border py-4">
           <span class="text-xs uppercase tracking-wider text-muted-foreground">Share</span>
-          <a target="_blank" rel="noreferrer" aria-label="Share on Twitter" data-share-twitter data-share-title={post.title} href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(shareUrl)}`} class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-primary"><Icon name="twitter" class="h-3.5 w-3.5" /></a>
-          <a target="_blank" rel="noreferrer" aria-label="Share on LinkedIn" data-share-linkedin href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`} class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-primary"><Icon name="linkedin" class="h-3.5 w-3.5" /></a>
-          <button type="button" data-copy-link class="ml-auto inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground">
-            <span data-copy-ready class="inline-flex items-center gap-2"><Icon name="copy" class="h-3.5 w-3.5" /> Copy link</span>
-            <span data-copy-done class="inline-flex items-center gap-2" hidden><Icon name="check" class="h-3.5 w-3.5" /> Copied</span>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Share on Twitter"
+            data-share-twitter
+            data-share-title={post.title}
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(shareUrl)}`}
+            class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-primary"
+            ><Icon name="twitter" class="h-3.5 w-3.5" /></a
+          >
+          <a
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Share on LinkedIn"
+            data-share-linkedin
+            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
+            class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-primary"
+            ><Icon name="linkedin" class="h-3.5 w-3.5" /></a
+          >
+          <button
+            type="button"
+            data-copy-link
+            class="ml-auto inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground"
+          >
+            <span data-copy-ready class="inline-flex items-center gap-2"
+              ><Icon name="copy" class="h-3.5 w-3.5" /> Copy link</span
+            >
+            <span data-copy-done class="inline-flex items-center gap-2" hidden
+              ><Icon name="check" class="h-3.5 w-3.5" /> Copied</span
+            >
           </button>
         </div>
 
         {
           author && (
             <div class="mt-10 flex items-start gap-4 rounded-md border border-border p-5">
-              <img src={author.avatar} alt="" width="56" height="56" class="h-14 w-14 rounded-full" />
+              <img
+                src={author.avatar}
+                alt=""
+                width="56"
+                height="56"
+                class="h-14 w-14 rounded-full"
+              />
               <div>
                 <div class="text-xs uppercase tracking-wider text-muted-foreground">Written by</div>
-                <a href={`/authors/${author.slug}`} class="font-serif text-lg font-semibold hover:text-primary">
+                <a
+                  href={`/authors/${author.slug}`}
+                  class="font-serif text-lg font-semibold hover:text-primary"
+                >
                   {author.name}
                 </a>
                 <p class="mt-1 text-sm text-muted-foreground">{author.bio}</p>
@@ -210,8 +268,12 @@ const jsonLd = {
           {
             prev ? (
               <a href={`/blog/${prev.slug}`} class="group block">
-                <div class="flex items-center gap-1 text-xs text-muted-foreground"><Icon name="arrow-left" class="h-3 w-3" /> Previous</div>
-                <div class="mt-1 font-serif text-base font-semibold leading-snug group-hover:text-primary">{prev.title}</div>
+                <div class="flex items-center gap-1 text-xs text-muted-foreground">
+                  <Icon name="arrow-left" class="h-3 w-3" /> Previous
+                </div>
+                <div class="mt-1 font-serif text-base font-semibold leading-snug group-hover:text-primary">
+                  {prev.title}
+                </div>
               </a>
             ) : (
               <div />
@@ -220,8 +282,12 @@ const jsonLd = {
           {
             next ? (
               <a href={`/blog/${next.slug}`} class="group block sm:text-right">
-                <div class="flex items-center gap-1 text-xs text-muted-foreground sm:justify-end">Next <Icon name="arrow-right" class="h-3 w-3" /></div>
-                <div class="mt-1 font-serif text-base font-semibold leading-snug group-hover:text-primary">{next.title}</div>
+                <div class="flex items-center gap-1 text-xs text-muted-foreground sm:justify-end">
+                  Next <Icon name="arrow-right" class="h-3 w-3" />
+                </div>
+                <div class="mt-1 font-serif text-base font-semibold leading-snug group-hover:text-primary">
+                  {next.title}
+                </div>
               </a>
             ) : (
               <div />
@@ -232,7 +298,9 @@ const jsonLd = {
         <div class="mt-12 rounded-md border border-dashed border-border p-8 text-center">
           <Icon name="message" class="mx-auto h-5 w-5 text-muted-foreground" />
           <div class="mt-2 font-serif text-lg">Comments</div>
-          <p class="mt-1 text-sm text-muted-foreground">Hook this up to your favourite commenting platform &mdash; Giscus, Disqus, or your own.</p>
+          <p class="mt-1 text-sm text-muted-foreground">
+            Hook this up to your favourite commenting platform &mdash; Giscus, Disqus, or your own.
+          </p>
         </div>
       </div>
 
@@ -248,7 +316,9 @@ const jsonLd = {
         <section class="mt-20 border-t border-border pt-12">
           <h2 class="font-serif text-2xl font-semibold">Continue reading</h2>
           <div class="mt-8 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-            {related.map((relatedPost) => <PostCard post={relatedPost} />)}
+            {related.map((relatedPost) => (
+              <PostCard post={relatedPost} />
+            ))}
           </div>
         </section>
       )
@@ -269,8 +339,10 @@ const jsonLd = {
   updateProgress();
   window.addEventListener("scroll", updateProgress, { passive: true });
 
-  const copyIcon = '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>';
-  const checkIcon = '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>';
+  const copyIcon =
+    '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>';
+  const checkIcon =
+    '<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>';
   const twitterShare = document.querySelector("[data-share-twitter]");
   const linkedinShare = document.querySelector("[data-share-linkedin]");
   const currentUrl = window.location.href;

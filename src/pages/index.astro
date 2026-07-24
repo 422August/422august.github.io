@@ -27,7 +27,9 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
   canonical="/"
   flushFooter
 >
-  <section class="relative -mt-[calc(4rem+2px)] min-h-[calc(100svh-2rem)] overflow-hidden border-b border-border/60 pt-[calc(4rem+2px)] sm:min-h-[760px]">
+  <section
+    class="relative -mt-[calc(4rem+2px)] min-h-[calc(100svh-2rem)] overflow-hidden border-b border-border/60 pt-[calc(4rem+2px)] sm:min-h-[760px]"
+  >
     <Image
       src={autumnScene}
       alt=""
@@ -44,37 +46,40 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
     <div
       aria-hidden="true"
       class="absolute inset-0 bg-[linear-gradient(90deg,oklch(0.1_0.02_70_/_0.68),oklch(0.16_0.02_80_/_0.38)_46%,oklch(0.98_0.01_90_/_0.1))] dark:bg-[linear-gradient(90deg,oklch(0.08_0.01_70_/_0.78),oklch(0.08_0.01_70_/_0.52)_48%,oklch(0.08_0.01_70_/_0.18))]"
-    />
+    >
+    </div>
     <div
       aria-hidden="true"
       class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/45 via-black/18 to-transparent"
-    />
+    >
+    </div>
     <div
       aria-hidden="true"
       class="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background via-background/72 to-transparent"
-    />
-    <div class="relative mx-auto flex min-h-[calc(100svh-6rem)] max-w-6xl items-center px-5 py-20 sm:min-h-[680px] sm:py-24">
+    >
+    </div>
+    <div
+      class="relative mx-auto flex min-h-[calc(100svh-6rem)] max-w-6xl items-center px-5 py-20 sm:min-h-[680px] sm:py-24"
+    >
       <div class="max-w-4xl text-white drop-shadow-[0_1px_18px_rgba(0,0,0,0.28)]">
         <h1 class="font-serif text-[2.5rem] font-medium leading-[1.02] sm:text-6xl lg:text-7xl">
-        An independent magazine on
-          <span class="italic text-white"> writing</span>,
-          <span class="italic text-white"> design</span>, and the
-          <span class="italic text-white"> slow web</span>.
+          A blog of August. Development, projects, and international news.
         </h1>
         <p class="mt-8 max-w-xl text-lg leading-relaxed text-white/86">
-          Essays, field notes, and conversations &mdash; published occasionally, edited carefully, and meant to be read in a single sitting.
+          A blog about development, projects, and international news.
         </p>
         <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
           <a
             href={`/blog/${featured.slug}`}
             class="group inline-flex items-center gap-2 border-b border-white pb-1 text-sm font-medium text-white hover:border-white/70 hover:text-white/82"
           >
-            Begin with this issue's lead essay
-            <Icon name="arrow-right" class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
+            Begin with the latest essay: {featured.title}
+            <Icon
+              name="arrow-right"
+              class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+            />
           </a>
-          <a href="/blog" class="text-sm text-white/76 hover:text-white">
-            Or browse the archive
-          </a>
+          <a href="/blog" class="text-sm text-white/76 hover:text-white"> Or browse the archive </a>
         </div>
       </div>
     </div>
@@ -83,14 +88,22 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
   <section class="border-b border-border/60">
     <div class="mx-auto max-w-6xl px-5 py-16">
       <div class="mb-6 flex items-center justify-between">
-        <div class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Featured</div>
-        <a href="/blog" class="text-xs text-muted-foreground hover:text-foreground">All writing &rarr;</a>
+        <div class="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+          Featured
+        </div>
+        <a href="/blog" class="text-xs text-muted-foreground hover:text-foreground"
+          >All writing &rarr;</a
+        >
       </div>
-      <article class="grid gap-10 lg:grid-cols-2">
-        <a href={`/blog/${featured.slug}`} class="group block" aria-label={`Read ${featured.title}`}>
-          <div class="aspect-[4/3] overflow-hidden rounded-md bg-muted">
-            {
-              featured.thumbnail && (
+      <article class={featured.thumbnail ? "grid gap-10 lg:grid-cols-2" : "max-w-3xl"}>
+        {
+          featured.thumbnail && (
+            <a
+              href={`/blog/${featured.slug}`}
+              class="group block"
+              aria-label={`Read ${featured.title}`}
+            >
+              <div class="aspect-[4/3] overflow-hidden rounded-md bg-muted">
                 <Image
                   src={featured.thumbnail}
                   alt=""
@@ -101,15 +114,20 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
                   format="webp"
                   quality={64}
                 />
-              )
-            }
-          </div>
-        </a>
+              </div>
+            </a>
+          )
+        }
         <div class="flex flex-col justify-center">
-          <div class="flex items-center gap-3 text-xs uppercase tracking-wider text-muted-foreground">
+          <div
+            class="flex items-center gap-3 text-xs uppercase tracking-wider text-muted-foreground"
+          >
             {
               featuredCategory && (
-                <a href={`/categories/${featuredCategory.slug}`} class="inline-flex min-h-9 items-center text-primary hover:underline">
+                <a
+                  href={`/categories/${featuredCategory.slug}`}
+                  class="inline-flex min-h-9 items-center text-primary hover:underline"
+                >
                   {featuredCategory.name}
                 </a>
               )
@@ -118,7 +136,9 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
             <time datetime={featured.date}>{formatDate(featured.date)}</time>
           </div>
           <a href={`/blog/${featured.slug}`} class="mt-2 block py-1">
-            <h2 class="font-serif text-3xl font-semibold leading-tight hover:text-primary sm:text-4xl">
+            <h2
+              class="font-serif text-3xl font-semibold leading-tight hover:text-primary sm:text-4xl"
+            >
               {featured.title}
             </h2>
           </a>
@@ -134,14 +154,19 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
                     height="28"
                     class="h-7 w-7 rounded-full"
                   />
-                  <a href={`/authors/${featuredAuthor.slug}`} class="hover:text-foreground">{featuredAuthor.name}</a>
+                  <a href={`/authors/${featuredAuthor.slug}`} class="hover:text-foreground">
+                    {featuredAuthor.name}
+                  </a>
                   <span>&middot;</span>
                 </>
               )
             }
             <span>{featured.readingTime} min read</span>
           </div>
-          <a href={`/blog/${featured.slug}`} class="mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline">
+          <a
+            href={`/blog/${featured.slug}`}
+            class="mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+          >
             Read the essay <Icon name="arrow-right" class="h-3.5 w-3.5" />
           </a>
         </div>
@@ -174,7 +199,11 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
       </div>
     </div>
 
-    <div data-home-empty class="mt-12 rounded-md border border-dashed border-border py-16 text-center text-muted-foreground" hidden>
+    <div
+      data-home-empty
+      class="mt-12 rounded-md border border-dashed border-border py-16 text-center text-muted-foreground"
+      hidden
+    >
       Nothing here yet in this section.
     </div>
 
@@ -183,7 +212,10 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
     </div>
 
     <div class="mt-12 text-center">
-      <a href="/blog" class="inline-flex items-center gap-2 rounded-md border border-border px-5 py-2.5 text-sm font-medium hover:bg-muted">
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-2 rounded-md border border-border px-5 py-2.5 text-sm font-medium hover:bg-muted"
+      >
         Browse the archive <Icon name="arrow-right" class="h-3.5 w-3.5" />
       </a>
     </div>

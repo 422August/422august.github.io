@@ -1,17 +1,15 @@
 const siteUrl = (
-  import.meta.env.SITE_URL ||
-  import.meta.env.PUBLIC_SITE_URL ||
-  "https://quietpages-eta.vercel.app"
+  "https://422august.github.io/blogs"
 ).replace(/\/$/, "");
 
 export const SITE = {
-  name: "Quiet Pages",
+  name: "August's Blog",
   description:
-    "An independent magazine on writing, design, and the slow web. Published occasionally, read closely.",
+    "A blog about AI, technology, and the future.",
   url: siteUrl,
   locale: "en-US",
   language: "en",
-  repositoryUrl: "https://github.com/andreialba/quietpages",
+  repositoryUrl: "https://github.com/422August/blogs",
 };
 
 export const NAVIGATION = [
@@ -22,9 +20,9 @@ export const NAVIGATION = [
 ];
 
 export const CONTACT = {
-  email: "hello@example.com",
-  socialHandle: "@quietpages",
-  socialUrl: "https://x.com/quietpages",
+  email: "youxunzhoou61@gmail.com",
+  socialHandle: "@august_0422_",
+  socialUrl: "https://x.com/august_0422_",
 };
 
 export const FORMS = {
@@ -49,46 +47,35 @@ export const SOCIAL_LINKS = [
 
 export const authors = [
   {
-    slug: "elena-march",
-    name: "Elena March",
-    bio: "Writer & editor covering design, craft, and slow technology.",
+    slug: "August",
+    name: "August0422",
+    bio: "Developer | AI Enthusiast | Tech Blogger",
     longBio:
-      "Elena March writes about the quiet edges of design and technology. Previously an editor at two small magazines, she now publishes essays and field notes from a desk overlooking the harbour.",
-    avatar: "/avatars/elena-march.svg",
-  },
-  {
-    slug: "samuel-okafor",
-    name: "Samuel Okafor",
-    bio: "Software engineer with a soft spot for typography and the open web.",
-    longBio:
-      "Samuel builds tools for writers and reads more than he ships. He believes the best interfaces are the ones you don't notice.",
-    avatar: "/avatars/samuel-okafor.svg",
-  },
-  {
-    slug: "mira-iwasaki",
-    name: "Mira Iwasaki",
-    bio: "Photographer and essayist based between Kyoto and Lisbon.",
-    longBio:
-      "Mira's work sits at the intersection of place, memory, and the everyday object. Her essays have appeared in a number of small but loved publications.",
-    avatar: "/avatars/mira-iwasaki.svg",
+      "High School Student | Coding in python & Javascript | Building cool side projects. | Learning NLP and AI-related technologies.",
+    avatar: "/avatars/august.jpg",
   },
 ];
 
 export const categories = [
-  { slug: "essays", name: "Essays" },
-  { slug: "design", name: "Design" },
-  { slug: "engineering", name: "Engineering" },
-  { slug: "field-notes", name: "Field Notes" },
-  { slug: "interviews", name: "Interviews" },
+  { slug: "ai", name: "Artificial Intelligence" },
+  { slug: "algorithms", name: "Algorithms" },
+  { slug: "notes", name: "Notes" },
+  { slug: "code", name: "Code" },
+  { slug: "news", name: "News" },
 ];
 
 export const tags = [
-  { slug: "writing", name: "Writing" },
-  { slug: "typography", name: "Typography" },
-  { slug: "minimalism", name: "Minimalism" },
-  { slug: "tools", name: "Tools" },
-  { slug: "travel", name: "Travel" },
-  { slug: "process", name: "Process" },
-  { slug: "web", name: "Web" },
-  { slug: "books", name: "Books" },
+  { slug: "cpp", name: "C++" },
+  { slug: "python", name: "Python" },
+  { slug: "javascript", name: "JavaScript" },
+  { slug: "news", name: "News" },
+  { slug: "development", name: "Development" },
+  { slug: "ml", name: "Machine Learning" },
+  { slug: "dl", name: "Deep Learning" },
+  { slug: "frontend", name: "Frontend" },
+  { slug: "backend", name: "Backend" },
+  { slug: "international", name: "International" },
+  { slug: "domestic", name: "Domestic" },
+  { slug: "projects", name: "Projects" },
+  { slug: "leadership", name: "Leadership" },
 ];
