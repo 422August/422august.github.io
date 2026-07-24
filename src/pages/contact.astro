@@ -3,117 +3,81 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import Icon from "../components/Icon.astro";
 import { SITE } from "../lib/blog-data.js";
-import { CONTACT, FORMS } from "../config/theme.config.ts";
+import { CONTACT } from "../config/theme.config.ts";
 
-const hasContactEndpoint = Boolean(FORMS.contact.action);
-const contactAction = hasContactEndpoint ? FORMS.contact.action : "/contact";
-const contactMethod = hasContactEndpoint ? FORMS.contact.method : "get";
-const contactEnctype = hasContactEndpoint ? FORMS.contact.enctype : undefined;
+// 可以在這個陣列直接新增、修改或刪除社群連結
+const socialLinks = [
+  {
+    name: "Email",
+    label: CONTACT.email,
+    href: `mailto:${CONTACT.email}`,
+    icon: "mail",
+  },
+  {
+    name: "Twitter / X",
+    label: CONTACT.socialHandle || "@422august",
+    href: CONTACT.socialUrl || "https://x.com",
+    icon: "twitter",
+  },
+  {
+    name: "GitHub",
+    label: "422august",
+    href: "https://github.com/422august",
+    icon: "github",
+  },
+  {
+    name: "RSS Feed",
+    label: "Subscribe to RSS",
+    href: "/rss.xml",
+    icon: "rss",
+  },
+];
 ---
 
 <BaseLayout
   title={`Contact - ${SITE.name}`}
-  description={`Get in touch with ${SITE.name}.`}
+  description={`Connect with ${SITE.name}.`}
   canonical="/contact"
 >
-  <div class="mx-auto max-w-3xl px-5 py-12">
+  <div class="mx-auto max-w-2xl px-5 py-12">
     <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Contact" }]} />
 
     <header class="mt-6">
-      <div class="text-xs font-medium uppercase tracking-[0.2em] text-primary">Contact</div>
-      <h1 class="mt-2 font-serif text-5xl font-semibold">Say hello.</h1>
-      <p class="mt-4 max-w-xl text-muted-foreground">Everything you want to share with me.</p>
+      <div class="text-xs font-medium uppercase tracking-[0.2em] text-primary">Connect</div>
+      <h1 class="mt-2 font-serif text-5xl font-semibold">Find me online.</h1>
+      <p class="mt-4 max-w-xl text-muted-foreground">
+        Feel free to reach out or follow my updates across the web.
+      </p>
     </header>
 
-    <div class="mt-12 grid gap-12 lg:grid-cols-[1fr_240px]">
-      <form
-        action={contactAction}
-        method={contactMethod}
-        enctype={contactEnctype}
-        class="space-y-5"
-      >
-        <div>
-          <label
-            for="name"
-            class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Name</label
-          >
-          <input
-            id="name"
-            name="name"
-            autocomplete="name"
-            required
-            class="mt-2 w-full border-0 border-b border-input bg-transparent py-2 text-base outline-none focus:border-primary"
-          />
-        </div>
-        <div>
-          <label
-            for="email"
-            class="text-xs font-medium uppercase tracking-wider text-muted-foreground">Email</label
-          >
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autocomplete="email"
-            required
-            class="mt-2 w-full border-0 border-b border-input bg-transparent py-2 text-base outline-none focus:border-primary"
-          />
-        </div>
-        <div>
-          <label
-            for="message"
-            class="text-xs font-medium uppercase tracking-wider text-muted-foreground"
-            >Message</label
-          >
-          <textarea
-            id="message"
-            name="message"
-            required
-            rows="6"
-            class="mt-2 w-full border-0 border-b border-input bg-transparent py-2 text-base outline-none focus:border-primary"
-          ></textarea>
-        </div>
-        <button
-          type="submit"
-          class="rounded-md bg-foreground px-6 py-2.5 text-sm font-medium text-background hover:opacity-90"
-        >
-          Send
-        </button>
-      </form>
-
-      <aside class="space-y-6 border-l border-border pl-8 lg:block">
-        <div>
-          <div class="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            Elsewhere
-          </div>
-          <ul class="mt-3 space-y-3 text-sm">
+    <main class="mt-10">
+      <ul class="divide-y divide-border border-y border-border">
+        {
+          socialLinks.map((item) => (
             <li>
-              <a href={`mailto:${CONTACT.email}`} class="flex items-center gap-2 hover:text-primary"
-                ><Icon name="mail" class="h-3.5 w-3.5" /> {CONTACT.email}</a
+              <a
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                class="group flex items-center justify-between py-4 transition-colors hover:text-primary"
               >
+                <div class="flex items-center gap-3">
+                  <Icon
+                    name={item.icon}
+                    class="h-4 w-4 text-muted-foreground group-hover:text-primary"
+                  />
+                  <span class="font-medium text-foreground group-hover:text-primary">
+                    {item.name}
+                  </span>
+                </div>
+                <span class="text-sm text-muted-foreground group-hover:text-primary">
+                  {item.label} &rarr;
+                </span>
+              </a>
             </li>
-            <li>
-              <a href={CONTACT.socialUrl} class="flex items-center gap-2 hover:text-primary"
-                ><Icon name="twitter" class="h-3.5 w-3.5" /> {CONTACT.socialHandle}</a
-              >
-            </li>
-            <li>
-              <a href="/rss.xml" class="flex items-center gap-2 hover:text-primary"
-                ><Icon name="rss" class="h-3.5 w-3.5" /> RSS feed</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div>
-          <div class="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            Pitches
-          </div>
-          <p class="mt-2 text-sm text-muted-foreground">
-            We commission essays from new contributors a few times a year. Send a short paragraph
-            about what you'd like to write.
-          </p>
-        </div>
-      </aside>
-    </div>
+          ))
+        }
+      </ul>
+    </main>
   </div>
 </BaseLayout>
