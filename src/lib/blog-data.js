@@ -5,15 +5,22 @@ import { authors, categories, tags } from "../config/theme.config.ts";
 const isoDate = (date) => date?.toISOString().slice(0, 10);
 const wordsPerMinute = 220;
 
-const estimateReadingTime = (text = "") => {
-  const words = text
+const estimateReadingTime = (text = "", wordsPerMinute = 350) => {
+  const cleanedText = text
     .replace(/```[\s\S]*?```/g, " ")
-    .replace(/<[^>]+>/g, " ")
+    .replace(/<[^>]+>/g, " ");
+
+  const chineseCount = (cleanedText.match(/[\u4e00-\u9fa5]/g) || []).length;
+
+  const englishCount = cleanedText
+    .replace(/[\u4e00-\u9fa5]/g, " ")
     .trim()
     .split(/\s+/)
     .filter(Boolean).length;
 
-  return Math.max(1, Math.ceil(words / wordsPerMinute));
+  const totalWords = chineseCount + englishCount;
+
+  return Math.max(1, Math.ceil(totalWords / wordsPerMinute));
 };
 
 export const imageSrc = (image) => (typeof image === "string" ? image : image?.src);
