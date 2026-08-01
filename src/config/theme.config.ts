@@ -60,8 +60,9 @@ export const categories = [
   { slug: "ai", name: "人工智慧" },
   { slug: "algorithms", name: "演算法" },
   { slug: "notes", name: "學習筆記" },
-  { slug: "code", name: "程式開發" },
   { slug: "news", name: "技術新聞" },
+  { slug: "projects", name: "專案" },
+  { slug: "feelings", name: "心情" },
 ];
 
 export const tags = [
