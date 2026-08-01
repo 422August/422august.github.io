@@ -1,5 +1,5 @@
 ---
-import { getEntry } from 'astro:content';
+import { getEntry } from "astro:content";
 
 interface Props {
   slug: string;
@@ -8,7 +8,7 @@ interface Props {
 const { slug } = Astro.props;
 
 // Fetch the targeted post data from the 'blog' collection
-const post = await getEntry('blog', slug);
+const post = await getEntry("blog", slug);
 
 if (!post) {
   throw new Error(`[ArticleCard] Post not found: "${slug}"`);
@@ -22,12 +22,22 @@ const url = `/blog/${slug}`;
 
 <a href={url} class="article-card">
   <div class="card-content">
-    <span class="card-badge">Related Article</span>
+    <span class="card-badge">相關文章</span>
     <h4 class="card-title">{title}</h4>
     {excerpt && <p class="card-description">{excerpt}</p>}
   </div>
   <div class="card-arrow">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
       <path d="M5 12h14"></path>
       <path d="m12 5 7 7-7 7"></path>
     </svg>

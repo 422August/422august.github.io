@@ -3,7 +3,7 @@
 import { Image } from "astro:assets";
 
 interface Props {
-    name: string; // e.g., "photo.jpg"
+    name: string; // 例如："photo.jpg"
     alt: string;
     width?: number;
     height?: number;
@@ -15,11 +15,11 @@ const allImages = import.meta.glob<{ default: ImageMetadata }>(
     "/src/content/**/*.{jpg,jpeg,png,webp,gif}",
 );
 
-// 2. Filter the map keys to find the one matching your filename
+// 2. 過濾 key，找出與檔案名稱相符的圖片路徑
 const imagePath = Object.keys(allImages).find((key) => key.endsWith(`/${name}`));
 
 if (!imagePath) {
-    throw new Error(`[CaptionImage] Image "${name}" not found in your content folder.`);
+    throw new Error(`[CaptionImage] 在 content 資料夾中找不到圖片 "${name}"。`);
 }
 ---
 

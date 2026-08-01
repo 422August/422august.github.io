@@ -1,23 +1,23 @@
 ---
-title: "Website Setup Record"
-excerpt: "Regarding the difficulties I encountered when setting up the website."
+title: "建置網站紀錄"
+excerpt: "記錄建立個人網站與設定網域時遇到的挑戰與心得。"
 date: 2026-07-31
 category: "notes"
-tags: ["frontend", "backend", "projects","feelings"]
+tags: ["frontend", "backend", "projects", "feelings"]
 author: "August"
 ---
 import CaptionImage from '../../../components/CaptionImage.astro';
 
-Since I acquired a `.tech` domain through the GitHub Student Developer Pack, and considering I had already built a personal blog using Astro + GitHub Pages, I decided to move my blog under this custom domain. Hence, this post.
+因為透過 GitHub Student Developer Pack 拿到了 `.tech` 網域，加上先前已經用 Astro + GitHub Pages 架好個人部落格，便決定把部落格搬到這個自訂網域下。於是就有了這篇文章。
 
-## Astro + GitHub Pages Deployment
-{/* <CaptionImage name="cover.jpg" alt="This is the second image caption" /> */}
-I used an Astro template, cloned it, and deployed it. It wasn't very difficult—I only needed to tweak a few components.
+## Astro + GitHub Pages 部署
+{/* <CaptionImage name="cover.jpg" alt="這是第二張圖片的說明" /> */}
+我直接選用 Astro 模板，複製專案後進行部署。整體過程並不複雜，只需要微調幾個元件即可。
 
-## DNS Configuration
+## DNS 設定
 
-I originally claimed the domain via get.tech and intended to deploy directly using GitHub without relying on any intermediary services. However, no matter how many times I configured the A records and CNAME, DNS verification consistently failed, which became quite frustrating. Eventually, I switched to Vercel for deployment and updated the domain's nameservers to Vercel's. That did the trick. I deployed the site on a subdomain (third-level domain), with the root domain (second-level domain) set to redirect directly to it.
+最初是在 get.tech 申請網域，原本打算直接透過 GitHub 進行部署，不依賴其他第三方服務。然而，無論怎麼設定 A 紀錄與 CNAME，DNS 驗證總是無法通過，讓人相當沮喪。最後我決定改用 Vercel 來託管部署，並將網域的 Name Server 指向 Vercel，問題立刻順利解決。目前將網站部署在子網域（三級網域）上，而主網域（二級網域）則直接設定重定向至子網域。
 
-## Reflections
+## 心得反思
 
-I have to admit, this was my first time dealing with DNS configurations—things like A records, AAAA records, CNAMEs, and so on. It was honestly pretty difficult. Asking AI didn't lead to a clear solution, and my setup only got worse as I kept tweaking it. Fortunately, the AI later suggested using a third-party deployment service. Although I wasn't thrilled about relying on a third-party platform at first, I ended up using one anyway, and it turned out to be very successful and much more convenient. Even though the domain is only free for one year, I think I'll likely want to renew it when the time comes.
+我必須承認，這是我第一次接觸 DNS 設定，像是 A 紀錄、AAAA 紀錄、CNAME 等概念。過程確實有些吃力，剛開始問 AI 也沒有得到很明確的解法，反而越改越混亂。好在後來 AI 建議嘗試第三方部署服務，雖然起初有點排斥依賴第三方平台，但嘗試之後發現運作得非常順暢，也便利許多。雖然這個網域只有免費提供一年，不過到期後我大概也會想繼續續費使用。

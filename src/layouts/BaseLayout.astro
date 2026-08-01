@@ -5,7 +5,7 @@ import Footer from "../components/Footer.astro";
 import { SITE, imageSrc } from "../lib/blog-data.js";
 
 const {
-  title = `${SITE.name} - A blog about web development and design`,
+  title = `${SITE.name} - 記錄 AI、技術與未來的部落格`,
   description = SITE.description,
   canonical,
   ogType = "website",
@@ -30,7 +30,7 @@ const ogImageUrl = absoluteUrl(ogImage);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="zh-TW">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -70,7 +70,7 @@ const ogImageUrl = absoluteUrl(ogImage);
     </script>
   </head>
   <body>
-    <a href="#main-content" class="skip-link">Skip to content</a>
+    <a href="#main-content" class="skip-link">跳至主要內容</a>
     <div class="flex min-h-dvh flex-col">
       <Header />
       <main id="main-content" class="flex-1">

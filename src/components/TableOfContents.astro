@@ -5,9 +5,7 @@ const { items = [] } = Astro.props;
 {
   items.length > 0 && (
     <div data-toc>
-      <div class="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-        On this page
-      </div>
+      <div class="text-xs font-medium uppercase tracking-wider text-muted-foreground">在本頁</div>
       <ul class="mt-3 space-y-2 border-l border-border">
         {items.map((item) => (
           <li

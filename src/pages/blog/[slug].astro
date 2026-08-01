@@ -84,8 +84,8 @@ const jsonLd = {
   <article class="mx-auto max-w-6xl px-5 py-10">
     <Breadcrumbs
       items={[
-        { label: "Home", to: "/" },
-        { label: "Archive", to: "/blog" },
+        { label: "首頁", to: "/" },
+        { label: "文章彙整", to: "/blog" },
         ...(category ? [{ label: category.name, to: `/categories/${category.slug}` }] : []),
         { label: post.title },
       ]}
@@ -127,13 +127,13 @@ const jsonLd = {
             <>
               <>
                 <span>&middot;</span>
-                <span class="italic">updated {formatDate(post.updated)}</span>
+                <span class="italic">更新於 {formatDate(post.updated)}</span>
               </>
             </>
           )
         }
         <span>&middot;</span>
-        <span>{post.readingTime} min read</span>
+        <span>{post.readingTime} 分鐘閱讀</span>
       </div>
     </header>
 
@@ -155,7 +155,7 @@ const jsonLd = {
             <figcaption class="mx-auto mt-3 max-w-2xl text-center text-xs leading-relaxed text-muted-foreground">
               {post.imageCredit.caption && <span>{post.imageCredit.caption} </span>}
               <span>
-                Photo by{" "}
+                相片由{" "}
                 <a
                   href={post.imageCredit.authorUrl}
                   target="_blank"
@@ -164,7 +164,7 @@ const jsonLd = {
                 >
                   {post.imageCredit.author}
                 </a>{" "}
-                on{" "}
+                發布於{" "}
                 <a
                   href={post.imageCredit.sourceUrl}
                   target="_blank"
@@ -173,7 +173,7 @@ const jsonLd = {
                 >
                   {post.imageCredit.source}
                 </a>
-                .
+                。
               </span>
             </figcaption>
           )}
@@ -188,7 +188,7 @@ const jsonLd = {
         </div>
 
         <div class="mt-10 flex flex-wrap items-center gap-2">
-          <span class="text-xs uppercase tracking-wider text-muted-foreground">Tags</span>
+          <span class="text-xs uppercase tracking-wider text-muted-foreground">標籤</span>
           {
             post.tags.map((tag) => {
               const item = getTag(tag);
@@ -205,11 +205,11 @@ const jsonLd = {
         </div>
 
         <div class="mt-8 flex items-center gap-2 border-y border-border py-4">
-          <span class="text-xs uppercase tracking-wider text-muted-foreground">Share</span>
+          <span class="text-xs uppercase tracking-wider text-muted-foreground">分享</span>
           <a
             target="_blank"
             rel="noreferrer"
-            aria-label="Share on Twitter"
+            aria-label="分享至 Twitter"
             data-share-twitter
             data-share-title={post.title}
             href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(shareUrl)}`}
@@ -219,7 +219,7 @@ const jsonLd = {
           <a
             target="_blank"
             rel="noreferrer"
-            aria-label="Share on LinkedIn"
+            aria-label="分享至 LinkedIn"
             data-share-linkedin
             href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
             class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-primary"
@@ -231,10 +231,10 @@ const jsonLd = {
             class="ml-auto inline-flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-xs text-muted-foreground hover:text-foreground"
           >
             <span data-copy-ready class="inline-flex items-center gap-2"
-              ><Icon name="copy" class="h-3.5 w-3.5" /> Copy link</span
+              ><Icon name="copy" class="h-3.5 w-3.5" /> 複製連結</span
             >
             <span data-copy-done class="inline-flex items-center gap-2" hidden
-              ><Icon name="check" class="h-3.5 w-3.5" /> Copied</span
+              ><Icon name="check" class="h-3.5 w-3.5" /> 已複製</span
             >
           </button>
         </div>
@@ -250,7 +250,7 @@ const jsonLd = {
                 class="h-14 w-14 rounded-full"
               />
               <div>
-                <div class="text-xs uppercase tracking-wider text-muted-foreground">Written by</div>
+                <div class="text-xs uppercase tracking-wider text-muted-foreground">作者</div>
                 <a
                   href={`/authors/${author.slug}`}
                   class="font-serif text-lg font-semibold hover:text-primary"
@@ -268,7 +268,7 @@ const jsonLd = {
             prev ? (
               <a href={`/blog/${prev.slug}`} class="group block">
                 <div class="flex items-center gap-1 text-xs text-muted-foreground">
-                  <Icon name="arrow-left" class="h-3 w-3" /> Previous
+                  <Icon name="arrow-left" class="h-3 w-3" /> 上一篇
                 </div>
                 <div class="mt-1 font-serif text-base font-semibold leading-snug group-hover:text-primary">
                   {prev.title}
@@ -282,7 +282,7 @@ const jsonLd = {
             next ? (
               <a href={`/blog/${next.slug}`} class="group block sm:text-right">
                 <div class="flex items-center gap-1 text-xs text-muted-foreground sm:justify-end">
-                  Next <Icon name="arrow-right" class="h-3 w-3" />
+                  下一篇 <Icon name="arrow-right" class="h-3 w-3" />
                 </div>
                 <div class="mt-1 font-serif text-base font-semibold leading-snug group-hover:text-primary">
                   {next.title}
@@ -307,7 +307,7 @@ const jsonLd = {
     {
       related.length > 0 && (
         <section class="mt-20 border-t border-border pt-12">
-          <h2 class="font-serif text-2xl font-semibold">Continue reading</h2>
+          <h2 class="font-serif text-2xl font-semibold">延伸閱讀</h2>
           <div class="mt-8 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((relatedPost) => (
               <PostCard post={relatedPost} />
@@ -397,8 +397,8 @@ const jsonLd = {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "code-copy-button";
-    button.dataset.tooltip = "Copy code";
-    button.setAttribute("aria-label", "Copy code");
+    button.dataset.tooltip = "複製程式碼";
+    button.setAttribute("aria-label", "複製程式碼");
     button.innerHTML = copyIcon;
     wrapper.appendChild(button);
 
@@ -408,13 +408,13 @@ const jsonLd = {
         await writeClipboard(pre.textContent ?? "");
         window.clearTimeout(resetTimer);
         button.classList.add("is-copied");
-        button.dataset.tooltip = "Copied";
-        button.setAttribute("aria-label", "Copied");
+        button.dataset.tooltip = "已複製";
+        button.setAttribute("aria-label", "已複製");
         button.innerHTML = checkIcon;
         resetTimer = window.setTimeout(() => {
           button.classList.remove("is-copied");
-          button.dataset.tooltip = "Copy code";
-          button.setAttribute("aria-label", "Copy code");
+          button.dataset.tooltip = "複製程式碼";
+          button.setAttribute("aria-label", "複製程式碼");
           button.innerHTML = copyIcon;
         }, 1800);
       } catch (error) {}

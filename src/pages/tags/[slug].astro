@@ -33,7 +33,7 @@ const list = await postsByTag(tag.slug);
     {
       list.length === 0 ? (
         <div class="mt-12 rounded-md border border-dashed border-border py-20 text-center text-muted-foreground">
-          Nothing tagged yet.
+          沒有文章使用此標籤。
         </div>
       ) : (
         list.map((post) => <PostCard post={post} variant="list" />)

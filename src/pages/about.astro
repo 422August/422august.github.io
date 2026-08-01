@@ -5,43 +5,42 @@ import { SITE, authors } from "../lib/blog-data.js";
 ---
 
 <BaseLayout
-  title={`About - ${SITE.name}`}
-  description={`About ${SITE.name}: an independent magazine on writing, design, and the slow web.`}
+  title={`關於 - ${SITE.name}`}
+  description={`關於 ${SITE.name}：記錄 AI、技術與未來的個人部落格。`}
   canonical="/about"
 >
   <div class="mx-auto max-w-3xl px-5 py-12">
-    <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "About" }]} />
+    <Breadcrumbs items={[{ label: "首頁", to: "/" }, { label: "關於" }]} />
 
     <header class="mt-6">
-      <div class="text-xs font-medium uppercase tracking-[0.2em] text-primary">About</div>
-      <h1 class="mt-2 font-serif text-5xl font-semibold leading-[1.05]">A blog of August.</h1>
+      <div class="text-xs font-medium uppercase tracking-[0.2em] text-primary">關於本站</div>
+      <h1 class="mt-2 font-serif text-5xl font-semibold leading-[1.05]">August 的個人部落格</h1>
     </header>
 
     <div class="prose-article mt-10">
       <p>
-        August's Blog is a personal blog by August0422, a high school student and aspiring
-        developer. The blog covers topics related to AI, technology, and the future, with a focus on
-        sharing insights, experiences, and knowledge in these areas.
+        August's Blog 是由 August0422 經營的個人部落格。作為一名熱愛開發的高中生，這裡主要記錄
+        AI、技術與未來的相關主題，並分享學習過程中的見解、經驗與知識。
       </p>
-      <h2 id="who-I-am">Who I am</h2>
+      <h2 id="who-I-am">關於我</h2>
       <p>
-        A high school student with a passion for technology and AI. I enjoy coding in Python and
-        JavaScript, building side projects, and exploring the latest advancements in AI and NLP. My
-        goal is to share my learning journey and insights through this blog.
+        一名對技術與 AI 充滿熱情的高中生。平時喜歡使用 Python 與 JavaScript 撰寫程式、打造 Side
+        Projects，並探索 AI
+        與自然語言處理（NLP）的最新進展。希望能透過這個部落格分享我的學習歷程與觀點。
       </p>
 
-      <h2 id="experience">Experience</h2>
+      <h2 id="experience">經歷與事蹟</h2>
       <p>
         <ul>
-          <li>President of Software Development Club</li>
-          <li>Top 1 in Mandatory Computer Science Curriculum (School-wide)</li>
-          <li>APCS 4 + 2</li>
+          <li>軟體研究社社長</li>
+          <li>部定必修資訊科技課程總成績第一名</li>
+          <li>APCS 觀念 4 級分 / 實作 2 級分</li>
         </ul>
       </p>
     </div>
 
     <section class="mt-12 border-t border-border pt-10">
-      <h2 class="font-serif text-2xl font-semibold">Contributors</h2>
+      <h2 class="font-serif text-2xl font-semibold">作者</h2>
       <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {
           authors.map((author) => (

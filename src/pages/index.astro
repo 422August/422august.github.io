@@ -21,7 +21,7 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
 ---
 
 <BaseLayout
-  title={`${SITE.name} - Writing, design & the slow web`}
+  title={`${SITE.name} - 程式開發、專案作品與技術觀察`}
   description={SITE.description}
   canonical="/"
   flushFooter
@@ -62,23 +62,23 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
     >
       <div class="max-w-4xl text-white drop-shadow-[0_1px_18px_rgba(0,0,0,0.28)]">
         <h1 class="font-serif text-[2.5rem] font-medium leading-[1.02] sm:text-6xl lg:text-7xl">
-          A blog of August. Development, projects, and international news.
+          August 的個人部落格。記錄軟體開發、專案作品與技術觀察。
         </h1>
         <p class="mt-8 max-w-xl text-lg leading-relaxed text-white/86">
-          A blog about development, projects, and international news.
+          分享程式開發、專案實作與技術領域的心得與筆記。
         </p>
         <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
           <a
             href={`/blog/${featured.slug}`}
             class="group inline-flex items-center gap-2 border-b border-white pb-1 text-sm font-medium text-white hover:border-white/70 hover:text-white/82"
           >
-            Begin with the latest essay: {featured.title}
+            從最新的文章開始閱讀：{featured.title}
             <Icon
               name="arrow-right"
               class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
             />
           </a>
-          <a href="/blog" class="text-sm text-white/76 hover:text-white"> Or browse the archive </a>
+          <a href="/blog" class="text-sm text-white/76 hover:text-white"> 或瀏覽所有文章歸檔 </a>
         </div>
       </div>
     </div>
@@ -88,10 +88,10 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
     <div class="mx-auto max-w-6xl px-5 py-16">
       <div class="mb-6 flex items-center justify-between">
         <div class="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-          Featured
+          精選文章
         </div>
         <a href="/blog" class="text-xs text-muted-foreground hover:text-foreground"
-          >All writing &rarr;</a
+          >所有文章 &rarr;</a
         >
       </div>
       <article class={featured.thumbnail ? "grid gap-10 lg:grid-cols-2" : "max-w-3xl"}>
@@ -100,7 +100,7 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
             <a
               href={`/blog/${featured.slug}`}
               class="group block"
-              aria-label={`Read ${featured.title}`}
+              aria-label={`閱讀 ${featured.title}`}
             >
               <div class="aspect-[4/3] overflow-hidden rounded-md bg-muted">
                 <Image
@@ -160,13 +160,13 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
                 </>
               )
             }
-            <span>{featured.readingTime} min read</span>
+            <span>{featured.readingTime} 分鐘閱讀</span>
           </div>
           <a
             href={`/blog/${featured.slug}`}
             class="mt-6 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
           >
-            Read the essay <Icon name="arrow-right" class="h-3.5 w-3.5" />
+            閱讀全文 <Icon name="arrow-right" class="h-3.5 w-3.5" />
           </a>
         </div>
       </article>
@@ -175,14 +175,14 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
 
   <section class="mx-auto max-w-6xl px-5 py-16" data-home-latest>
     <div class="flex flex-wrap items-center justify-between gap-4">
-      <h2 class="font-serif text-2xl font-semibold">Latest</h2>
+      <h2 class="font-serif text-2xl font-semibold">最新文章</h2>
       <div class="flex flex-wrap gap-2">
         <button
           type="button"
           data-home-filter=""
           class="rounded-full border px-3 py-1 text-xs transition-colors border-foreground bg-foreground text-background"
         >
-          All
+          全部
         </button>
         {
           categories.map((category) => (
@@ -203,7 +203,7 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
       class="mt-12 rounded-md border border-dashed border-border py-16 text-center text-muted-foreground"
       hidden
     >
-      Nothing here yet in this section.
+      此分類下尚無文章。
     </div>
 
     <div class="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -215,7 +215,7 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
         href="/blog"
         class="inline-flex items-center gap-2 rounded-md border border-border px-5 py-2.5 text-sm font-medium hover:bg-muted"
       >
-        Browse the archive <Icon name="arrow-right" class="h-3.5 w-3.5" />
+        瀏覽文章歸檔 <Icon name="arrow-right" class="h-3.5 w-3.5" />
       </a>
     </div>
   </section>

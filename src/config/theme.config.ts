@@ -1,22 +1,22 @@
 const siteUrl = (
-  "https://422august.github.io/blogs"
+  "https://blog.august0422.tech"
 ).replace(/\/$/, "");
 
 export const SITE = {
   name: "August's Blog",
   description:
-    "A blog about AI, technology, and the future.",
+    "記錄 AI、技術與未來的部落格。",
   url: siteUrl,
-  locale: "en-US",
-  language: "en",
+  locale: "zh-TW",
+  language: "zh-TW",
   repositoryUrl: "https://github.com/422August/blogs",
 };
 
 export const NAVIGATION = [
-  { to: "/", label: "Home" },
-  { to: "/blog", label: "Writing" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", label: "首頁" },
+  { to: "/blog", label: "文章" },
+  { to: "/about", label: "關於" },
+  { to: "/contact", label: "聯絡" },
 ];
 
 export const CONTACT = {
@@ -39,44 +39,44 @@ export const FORMS = {
 };
 
 export const SOCIAL_LINKS = [
-  { href: "/rss.xml", label: "RSS feed", icon: "rss" },
-  { href: CONTACT.socialUrl, label: `${SITE.name} on X`, icon: "twitter" },
-  { href: SITE.repositoryUrl, label: `${SITE.name} on GitHub`, icon: "github" },
-  { href: `mailto:${CONTACT.email}`, label: "Email", icon: "mail" },
+  { href: "/rss.xml", label: "RSS 訂閱", icon: "rss" },
+  { href: CONTACT.socialUrl, label: `${SITE.name} 的 X`, icon: "twitter" },
+  { href: SITE.repositoryUrl, label: `${SITE.name} 的 GitHub`, icon: "github" },
+  { href: `mailto:${CONTACT.email}`, label: "電子郵件", icon: "mail" },
 ];
 
 export const authors = [
   {
     slug: "August",
     name: "August0422",
-    bio: "Developer | AI Enthusiast | Tech Blogger",
+    bio: "開發者 | AI 愛好者 | 技術部落客",
     longBio:
-      "High School Student | Coding in python & Javascript | Building cool side projects. | Learning NLP and AI-related technologies.",
+      "高中生 | 主要使用 Python & JavaScript 開發 | 打造有趣的 Side Projects | 正在學習 NLP 與 AI 相關技術。",
     avatar: "/avatars/august.jpg",
   },
 ];
 
 export const categories = [
-  { slug: "ai", name: "Artificial Intelligence" },
-  { slug: "algorithms", name: "Algorithms" },
-  { slug: "notes", name: "Notes" },
-  { slug: "code", name: "Code" },
-  { slug: "news", name: "News" },
+  { slug: "ai", name: "人工智慧" },
+  { slug: "algorithms", name: "演算法" },
+  { slug: "notes", name: "學習筆記" },
+  { slug: "code", name: "程式開發" },
+  { slug: "news", name: "技術新聞" },
 ];
 
 export const tags = [
   { slug: "cpp", name: "C++" },
   { slug: "python", name: "Python" },
   { slug: "javascript", name: "JavaScript" },
-  { slug: "news", name: "News" },
-  { slug: "development", name: "Development" },
-  { slug: "ml", name: "Machine Learning" },
-  { slug: "dl", name: "Deep Learning" },
-  { slug: "frontend", name: "Frontend" },
-  { slug: "backend", name: "Backend" },
-  { slug: "international", name: "International" },
-  { slug: "domestic", name: "Domestic" },
-  { slug: "projects", name: "Projects" },
-  { slug: "leadership", name: "Leadership" },
-  { slug: "feelings", name: "Feelings" },
+  { slug: "news", name: "新聞" },
+  { slug: "development", name: "軟體開發" },
+  { slug: "ml", name: "機器學習" },
+  { slug: "dl", name: "深度學習" },
+  { slug: "frontend", name: "前端開發" },
+  { slug: "backend", name: "後端開發" },
+  { slug: "international", name: "國際" },
+  { slug: "domestic", name: "國內" },
+  { slug: "projects", name: "專案" },
+  { slug: "leadership", name: "領導力" },
+  { slug: "feelings", name: "心情" },
 ];
