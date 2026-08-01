@@ -49,7 +49,7 @@ export const authors = [
   {
     slug: "August",
     name: "August0422",
-    bio: "開發者 | AI 愛好者 | 技術部落客",
+    bio: "學生開發者 | 前端工程師 | AI工程師 | 維基人",
     longBio:
       "高中生 | 主要使用 Python & JavaScript 開發 | 打造有趣的 Side Projects | 正在學習 NLP 與 AI 相關技術。",
     avatar: "/avatars/august.jpg",
@@ -77,7 +77,6 @@ export const tags = [
   { slug: "backend", name: "後端開發" },
   { slug: "international", name: "國際" },
   { slug: "domestic", name: "國內" },
-  { slug: "projects", name: "專案" },
   { slug: "leadership", name: "領導力" },
   { slug: "feelings", name: "心情" },
 ];
