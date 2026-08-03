@@ -11,9 +11,10 @@ imageCredit:
  caption: "實際畫面"
  author: "August0422"
  authorUrl: "https://github.com/422August"
- source: "August's blog"
+ source: "August's blog" 
  sourceUrl: "https://blog.august0422.tech/"
 ---
+
 
 由於衛生組自行製作了日常打掃管理系統，軟體研究社數次回報多個bug，衛生組便十分信任軟體研究社之能力，又衛生組長期有管理返校打掃之業務，以人工管理極為不便，便委託軟體研究社製作返校打掃管理系統，軟體研究社於幹部會議時決定，依《軟體研究社社團組織章程》第22條「	凡是委由本社製作之軟體或其他，均由幹部會議決議交由何人製作。」，委由本人製作。
 
