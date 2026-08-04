@@ -57,8 +57,7 @@ export const authors = [
 ];
 
 export const categories = [
-  { slug: "ai", name: "人工智慧" },
-  { slug: "algorithms", name: "演算法" },
+  { slug: "code", name: "程式碼" },
   { slug: "notes", name: "筆記" },
   { slug: "news", name: "新聞" },
   { slug: "projects", name: "專案" },
@@ -69,14 +68,15 @@ export const tags = [
   { slug: "cpp", name: "C++" },
   { slug: "python", name: "Python" },
   { slug: "javascript", name: "JavaScript" },
-  { slug: "news", name: "新聞" },
+  { slug: "ai", name: "人工智慧" },
   { slug: "development", name: "軟體開發" },
   { slug: "ml", name: "機器學習" },
   { slug: "dl", name: "深度學習" },
   { slug: "frontend", name: "前端開發" },
   { slug: "backend", name: "後端開發" },
-  { slug: "international", name: "國際" },
-  { slug: "domestic", name: "國內" },
+  { slug: "security", name: "資訊安全" },
+  { slug: "international", name: "國際新聞" },
+  { slug: "domestic", name: "國內新聞" },
   { slug: "leadership", name: "領導力" },
   { slug: "feelings", name: "心情" },
 ];
