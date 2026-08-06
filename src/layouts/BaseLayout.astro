@@ -5,8 +5,8 @@ import Footer from "../components/Footer.astro";
 import { SITE, imageSrc } from "../lib/blog-data.js";
 
 const {
-  title = `${SITE.name} - 記錄 AI、技術與未來的部落格`,
-  description = SITE.description,
+  title = `${SITE.name} — 個人專案與學習筆記`,
+  description = SITE.description || "分享軟體開發、專案實作與技術領域的心得與筆記。",
   canonical,
   ogType = "website",
   ogImage,
@@ -25,6 +25,7 @@ const absoluteUrl = (value) => {
     return src;
   }
 };
+
 const canonicalUrl = absoluteUrl(canonical || Astro.url.pathname);
 const ogImageUrl = absoluteUrl(ogImage);
 ---
@@ -37,17 +38,25 @@ const ogImageUrl = absoluteUrl(ogImage);
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content={SITE.name} />
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={SITE.name} />
     {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
     {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+
+    <!-- Canonical URL -->
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+
+    <!-- Icons & Preload Fonts -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link
@@ -58,7 +67,11 @@ const ogImageUrl = absoluteUrl(ogImage);
       crossorigin
     />
     <link rel="alternate" type="application/rss+xml" title={SITE.name} href="/rss.xml" />
+
+    <!-- Structured Data (JSON-LD) -->
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+
+    <!-- Theme Initialization (防止深色模式閃爍) -->
     <script is:inline>
       (function () {
         try {

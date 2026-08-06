@@ -18,14 +18,37 @@ const featured = await featuredPost();
 const featuredAuthor = getAuthor(featured.author);
 const featuredCategory = getCategory(featured.category);
 const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slug);
+
+// 簡化專案資料結構，方便日後擴充或抽離成獨立的資料檔
+const featuredProjects = [
+  {
+    title: "返校打掃管理系統",
+    description: "針對特定用途所特別訂製之特別系統。",
+    tags: ["frontend", "backend", "JavaScript"],
+    link: "https://github.com/cpyc234-sketch/returntoschool",
+  },
+  {
+    title: "團購管理系統",
+    description: "一套 Python + HTML 建構的團購輔助工具。",
+    tags: ["frontend", "python", "TypeScript"],
+    link: "https://github.com/422August/group_buying",
+  },
+  {
+    title: "鍵盤側錄器",
+    description: "一個使用 Python 開發的鍵盤側錄器，能夠監控鍵盤輸入並記錄。",
+    tags: ["Python"],
+    link: "https://github.com/422August/keyboard-listening",
+  },
+];
 ---
 
 <BaseLayout
-  title={`${SITE.name} - 程式開發、專案作品與技術觀察`}
+  title={`${SITE.name} — 個人專案與學習筆記`}
   description={SITE.description}
   canonical="/"
   flushFooter
 >
+  {/* Hero 區塊 */}
   <section
     class="relative -mt-[calc(4rem+2px)] min-h-[calc(100svh-2rem)] overflow-hidden border-b border-border/60 pt-[calc(4rem+2px)] sm:min-h-[760px]"
   >
@@ -62,37 +85,94 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
     >
       <div class="max-w-4xl text-white drop-shadow-[0_1px_18px_rgba(0,0,0,0.28)]">
         <h1 class="font-serif text-[2.5rem] font-medium leading-[1.02] sm:text-6xl lg:text-7xl">
-          August 的個人部落格。記錄軟體開發、專案作品與技術觀察。
+          August — 個人專案與學習筆記
         </h1>
         <p class="mt-8 max-w-xl text-lg leading-relaxed text-white/86">
-          分享程式開發、專案實作與技術領域的心得與筆記。
+          專注於軟體開發、演算法思維與 Side Projects 實作，並紀錄技術探索歷程。
         </p>
         <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
           <a
             href={`/blog/${featured.slug}`}
             class="group inline-flex items-center gap-2 border-b border-white pb-1 text-sm font-medium text-white hover:border-white/70 hover:text-white/82"
           >
-            從最新的文章開始閱讀：{featured.title}
+            閱讀最新文章：{featured.title}
             <Icon
               name="arrow-right"
               class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
             />
           </a>
-          <a href="/blog" class="text-sm text-white/76 hover:text-white"> 或瀏覽所有文章歸檔 </a>
+          <div class="flex items-center gap-4 text-sm text-white/80">
+            <a href="#projects" class="hover:text-white transition-colors">精選專案</a>
+            <span>&middot;</span>
+            <a href="/about" class="hover:text-white transition-colors">關於我</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  {/* 精選專案區塊 */}
+  <section id="projects" class="border-b border-border/60 bg-muted/20">
+    <div class="mx-auto max-w-6xl px-5 py-16">
+      <div class="mb-8 flex items-center justify-between">
+        <div>
+          <h2 class="font-serif text-2xl font-semibold">精選專案</h2>
+          <p class="mt-1 text-xs text-muted-foreground">探索開發實作與個人計畫</p>
+        </div>
+        <a
+          href="https://github.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
+        >
+          前往 GitHub <Icon name="arrow-right" class="h-3 w-3" />
+        </a>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          featuredProjects.map((project) => (
+            <div class="group relative flex flex-col justify-between rounded-lg border border-border/80 bg-background p-6 transition-all hover:border-foreground/40 hover:shadow-sm">
+              <div>
+                <h3 class="font-semibold text-foreground group-hover:text-primary transition-colors">
+                  {project.title}
+                </h3>
+                <p class="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  {project.description}
+                </p>
+              </div>
+              <div class="mt-6 flex items-center justify-between">
+                <div class="flex flex-wrap gap-1.5 font-mono text-xs text-muted-foreground">
+                  {project.tags.map((tag) => (
+                    <span class="rounded bg-muted px-2 py-0.5">{tag}</span>
+                  ))}
+                </div>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-xs font-medium text-muted-foreground hover:text-foreground"
+                  aria-label={`查看 ${project.title} 專案`}
+                >
+                  查看 ↗
+                </a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  {/* 精選文章區塊 */}
   <section class="border-b border-border/60">
     <div class="mx-auto max-w-6xl px-5 py-16">
       <div class="mb-6 flex items-center justify-between">
         <div class="text-xs font-medium uppercase tracking-wider text-muted-foreground">
           精選文章
         </div>
-        <a href="/blog" class="text-xs text-muted-foreground hover:text-foreground"
-          >所有文章 &rarr;</a
-        >
+        <a href="/blog" class="text-xs text-muted-foreground hover:text-foreground">
+          所有文章 &rarr;
+        </a>
       </div>
       <article class={featured.thumbnail ? "grid gap-10 lg:grid-cols-2" : "max-w-3xl"}>
         {
@@ -173,6 +253,7 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
     </div>
   </section>
 
+  {/* 最新文章區塊 */}
   <section class="mx-auto max-w-6xl px-5 py-16" data-home-latest>
     <div class="flex flex-wrap items-center justify-between gap-4">
       <h2 class="font-serif text-2xl font-semibold">最新文章</h2>
@@ -215,7 +296,7 @@ const latest = (await sortedPosts()).filter((post) => post.slug !== featured.slu
         href="/blog"
         class="inline-flex items-center gap-2 rounded-md border border-border px-5 py-2.5 text-sm font-medium hover:bg-muted"
       >
-        瀏覽文章歸檔 <Icon name="arrow-right" class="h-3.5 w-3.5" />
+        瀏覽所有文章 <Icon name="arrow-right" class="h-3.5 w-3.5" />
       </a>
     </div>
   </section>

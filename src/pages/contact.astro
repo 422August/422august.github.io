@@ -5,14 +5,8 @@ import Icon from "../components/Icon.astro";
 import { SITE } from "../lib/blog-data.js";
 import { CONTACT } from "../config/theme.config.ts";
 
-// 可以在這個陣列直接新增、修改或刪除社群連結
+// 社群與聯繫管道設定
 const socialLinks = [
-  {
-    name: "Twitter / X",
-    label: CONTACT.socialHandle || "@422august",
-    href: CONTACT.socialUrl || "https://x.com",
-    icon: "twitter",
-  },
   {
     name: "GitHub",
     label: "422august",
@@ -20,8 +14,14 @@ const socialLinks = [
     icon: "github",
   },
   {
+    name: "Twitter / X",
+    label: CONTACT.socialHandle || "@422august",
+    href: CONTACT.socialUrl || "https://x.com/422august",
+    icon: "twitter",
+  },
+  {
     name: "RSS Feed",
-    label: "Subscribe to RSS",
+    label: "訂閱 RSS",
     href: "/rss.xml",
     icon: "rss",
   },
@@ -29,18 +29,18 @@ const socialLinks = [
 ---
 
 <BaseLayout
-  title={`Contact - ${SITE.name}`}
-  description={`Connect with ${SITE.name}.`}
+  title={`聯絡方式 — ${SITE.name}`}
+  description={`與 ${SITE.name} 建立聯繫，歡迎透過 Email、GitHub 或社群平台交流。`}
   canonical="/contact"
 >
   <div class="mx-auto max-w-2xl px-5 py-12">
-    <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Contact" }]} />
+    <Breadcrumbs items={[{ label: "首頁", to: "/" }, { label: "聯絡方式" }]} />
 
     <header class="mt-6">
-      <div class="text-xs font-medium uppercase tracking-[0.2em] text-primary">聯絡</div>
-      <h1 class="mt-2 font-serif text-5xl font-semibold">在這裡與我聯繫</h1>
-      <p class="mt-4 max-w-xl text-muted-foreground">
-        如果你對我的文章、專案或任何技術相關的話題有興趣，歡迎透過以下方式與我聯繫。
+      <div class="text-xs font-medium uppercase tracking-[0.2em] text-primary">Contact</div>
+      <h1 class="mt-2 font-serif text-4xl font-semibold sm:text-5xl">聯絡方式</h1>
+      <p class="mt-4 max-w-xl leading-relaxed text-muted-foreground">
+        無論是專案合作、技術討論，或者對文章內容有任何想法，都歡迎透過以下管道與我聯繫。
       </p>
     </header>
 
@@ -58,13 +58,13 @@ const socialLinks = [
                 <div class="flex items-center gap-3">
                   <Icon
                     name={item.icon}
-                    class="h-4 w-4 text-muted-foreground group-hover:text-primary"
+                    class="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors"
                   />
-                  <span class="font-medium text-foreground group-hover:text-primary">
+                  <span class="font-medium text-foreground group-hover:text-primary transition-colors">
                     {item.name}
                   </span>
                 </div>
-                <span class="text-sm text-muted-foreground group-hover:text-primary">
+                <span class="text-sm text-muted-foreground group-hover:text-primary transition-colors">
                   {item.label} &rarr;
                 </span>
               </a>

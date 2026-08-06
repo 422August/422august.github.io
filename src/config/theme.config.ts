@@ -1,5 +1,5 @@
 const siteUrl = (
-  "https://blog.august0422.tech"
+  "https://august0422.tech"
 ).replace(/\/$/, "");
 
 export const SITE = {
@@ -9,13 +9,13 @@ export const SITE = {
   url: siteUrl,
   locale: "zh-TW",
   language: "zh-TW",
-  repositoryUrl: "https://github.com/422August/blogs",
+  repositoryUrl: "https://github.com/422August/blog",
 };
 
 export const NAVIGATION = [
   { to: "/", label: "首頁" },
   { to: "/blog", label: "文章" },
-  { to: "/about", label: "關於" },
+  { to: "/about", label: "關於我" },
   { to: "/contact", label: "聯絡" },
 ];
 
@@ -49,9 +49,9 @@ export const authors = [
   {
     slug: "August",
     name: "August0422",
-    bio: "學生開發者 | 前端工程師 | AI工程師 | 維基人",
+    bio: "學生開發者",
     longBio:
-      "高中生 | 主要使用 Python & JavaScript 開發 | 打造有趣的 Side Projects | 正在學習 NLP 與 AI 相關技術。",
+      "高中生 | 主要使用 Python & JavaScript 開發 | 正在學習 NLP 與 AI 相關技術。",
     avatar: "/avatars/august.jpg",
   },
 ];
